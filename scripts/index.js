@@ -34,7 +34,7 @@ const showItems = async (itemsArray) => {
     const { _id, name, description, brand, imageUrl, price } = item;
     ul.innerHTML += `
 
-    <div class="card col-3">
+    <li class="card col-3 text-center p-3">
         <img src="${imageUrl}" class="card-img-top" alt="${name}">
         <div class="card-body">
             <h5 class="card-title">${name}</h5>
@@ -42,6 +42,6 @@ const showItems = async (itemsArray) => {
 
             <a href="./backOffice.html?id=${_id}" class="btn btn-primary">More</a>
         </div>
-    </div>`;
+    </li>`;
   });
 };
