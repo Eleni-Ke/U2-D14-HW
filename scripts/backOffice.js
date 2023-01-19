@@ -41,7 +41,8 @@ const showItemToEdit = async (item) => {
                 <h5 class="card-title">${name} by ${brand}</h5>
                 <p class="card-text">${description}</p>
                 <p class="card-text">$ ${price}</p>
-                <a href="./backOffice.html?id=${_id}" class="btn btn-primary">More</a>
+                <button class="btn btn-warning" onclick="">Edit</button>
+                <button class="btn btn-danger" onclick="deleteItem()">Delete</button>
             </div>
         </li>
     </ul>`;
@@ -67,8 +68,29 @@ const addItem = async () => {
     });
     if (res.ok) {
       console.log("success!");
+      window.location.href = "./index.html";
     } else {
       console.log("Oh no something went wrong...");
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const deleteItem = async () => {
+  try {
+    let res = await fetch(url + id, {
+      method: "DELETE",
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2M5NDRlM2U3MzczODAwMTUzNzQzYzAiLCJpYXQiOjE2NzQxMzQ3NTUsImV4cCI6MTY3NTM0NDM1NX0.t0pnWKSN0hLWlcvYzkEigefSBEeys17XVnr-7Z7GgzA",
+      },
+    });
+    if (res.ok) {
+      console.log("Item has been deleted. Awsome!");
+      window.location.href = "./index.html";
+    } else {
+      console.log("Woops, something went wrong...");
     }
   } catch (error) {
     console.log(error);
